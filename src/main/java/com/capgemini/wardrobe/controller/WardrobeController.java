@@ -16,7 +16,7 @@ public class WardrobeController {
     private static ArrayList<Wardrobe> wardrobes = new ArrayList<>();
 
 
-    @GetMapping("{name}")  //allows you to put variables
+    @GetMapping("{name}")  //allows you to put variable
     public void createWardrobe(@PathVariable String name) {
         Wardrobe wardrobe = new Wardrobe(name);
 
@@ -26,10 +26,10 @@ public class WardrobeController {
 
     //localhost:80808/api/wardrobe/
     @GetMapping("/")
-    private ArrayList<Wardrobe> getWardrobes() {
+    private ArrayList<Wardrobe> getAllWardrobes() {
         return wardrobes;
     }
 
 
-    
+
 }
