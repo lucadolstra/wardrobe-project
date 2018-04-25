@@ -57,6 +57,11 @@ public class WardrobeController {
     @GetMapping("/enter")
     public String enter(){
         if(wardrobe.getOpen()==true){
+            int chance = (int) (Math.random() * 50);
+            if (chance == 1){
+                wardrobe.setInNarnia(true);
+                return "you have entered Narnia";
+            }
             wardrobe.setInside(true);
             return "You have entered the closet";
         }
@@ -88,5 +93,26 @@ public class WardrobeController {
         }
    }
 
+   @GetMapping("/kick2")
+   public String kickCloset2() {
+       if (wardrobe.getOpen() == false) {
+           int change = (int) (Math.random() * 10);
+           if (change == 1) {
+               return "The housekeeper has caught you! Timeout";
+           } else return "You got away with it";
+       } else {
+           return "close the closet in order to kick it";
 
-}
+       }
+   }
+
+   @GetMapping("/delete")
+    public String deleteCloset(){
+
+            return "The Closet has been removed";
+        }
+
+   }
+
+
+

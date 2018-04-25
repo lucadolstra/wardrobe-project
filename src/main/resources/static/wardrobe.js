@@ -27,40 +27,43 @@ function getCloset(){
 
  function open(){
  $.get("/api/wardrobe/open", function(data){
- alert(data);
+ $("p").html(data);
+
  });
  }
 
  function close(){
  $.get("/api/wardrobe/close", function(data){
- alert(data);
+ $("p").html(data);
  });
   $("#close").hide;
  }
 
  function enter(){
  $.get("/api/wardrobe/enter", function(data){
- alert(data);
+  $("p").html(data);
+
  });
  }
 
  function kick(){
- $.get("/api/wardrobe/kick", function(data){
- alert(data);
+ $.get("/api/wardrobe/kick2", function(data){
+  $("p").html(data);
  });
  }
 
  function exit(){
  $.get("/api/wardrobe/exit", function(data){
- alert(data);
+  $("p").html(data);
  });
  }
 
-
-
-
-
-
+// function del(){
+//  $.get("/api/wardrobe/delete", function(data){
+//   $("p").html(data);
+//  });
+// }
+//
 
 $("#saveForm").submit(saveWardrobe);  //eventhandler
 $("#open").click(open);

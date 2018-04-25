@@ -6,6 +6,7 @@ public class Wardrobe {
     private int health;
     private Boolean inside;
     private String status;
+    private Boolean inNarnia;
 
     public Wardrobe() {
     }
@@ -14,6 +15,8 @@ public class Wardrobe {
         this.name = name;
         this.health = 100;
         this.isOpen = false;
+        this.inside = false;
+        this.inNarnia = false;
 
     }
 
@@ -55,5 +58,13 @@ public class Wardrobe {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Boolean getInNarnia() {
+        return inNarnia;
+    }
+
+    public void setInNarnia(Boolean inNarnia) {
+        this.inNarnia = inNarnia;
     }
 }
