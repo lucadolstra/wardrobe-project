@@ -3,16 +3,16 @@ package com.capgemini.wardrobe.object;
 public class Wardrobe {
     private String name = "";
     private Boolean isOpen;
-    private int strength;
+    private int health;
     private Boolean inside;
     private String status;
 
     public Wardrobe() {
     }
 
-    public Wardrobe(String name) {
+    public Wardrobe(String name, Boolean isOpen, int Strength, Boolean inside) {
         this.name = name;
-        this.strength = 100;
+        this.health = 100;
         this.isOpen = false;
 
     }
@@ -33,12 +33,12 @@ public class Wardrobe {
         isOpen = open;
     }
 
-    public int getStrength() {
-        return strength;
+    public int getHealth() {
+        return health;
     }
 
-    public void setStrength(int strength) {
-        this.strength = strength;
+    public void setHealth(int strength) {
+        this.health = strength;
     }
 
     public Boolean getInside() {

@@ -9,12 +9,17 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/wardrobe/")  //all mappings have this default prefix
 public class WardrobeController {
 
-   private Wardrobe wardrobe = new Wardrobe("");
+   private Wardrobe wardrobe = new Wardrobe("", false, 100, false);
+
+   //, @PathVariable int health, @PathVariable Boolean inside
 
     @GetMapping("{name}")  //allows you to put variable
-    public String createWardrobe(@PathVariable String name) {
+    public void createWardrobe(@PathVariable String name, @PathVariable Boolean isOpen) {
         name = wardrobe.getName();
-        return name;
+        isOpen = wardrobe.getOpen();
+//        health = wardrobe.getHealth();
+//        inside = wardrobe.getInside();
+
           }
 
     //localhost:80808/api/wardrobe/
@@ -73,8 +78,11 @@ public class WardrobeController {
     public String kickCloset(){
         if(wardrobe.getOpen()==false){
             int damage =  (int) (Math.random() * 100);
-            wardrobe.setStrength(wardrobe.getStrength()-damage);
-            return "The strength of the closet is now " + wardrobe.getStrength() + " percent";}
+            wardrobe.setHealth(wardrobe.getHealth()-damage);
+            return "The strength of the closet is now " + wardrobe.getHealth() + " percent";}
+            if(wardrobe.getHealth()<= 20){
+            return "The closet is broken";
+            }
             else{ return"close the closet in order to kick it";
 
         }

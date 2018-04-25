@@ -1,3 +1,30 @@
+function getCloset(){
+                $.get("/api/wardrobe/", function(data){
+
+                   });
+}
+
+ function saveWardrobe(e){
+
+        e.preventDefault();
+
+        var name = $("#name").val();
+
+
+         $.post("/api/wardrobe/add",
+                {
+                name : name
+
+                },
+               function(data){
+                getCloset();
+                $("p").html("Closet: " + data.name );
+
+
+                    });
+}
+
+
  function open(){
  $.get("/api/wardrobe/open", function(data){
  alert(data);
@@ -29,31 +56,9 @@
  });
  }
 
- function getCloset(){
-               $.get("/api/wardrobe/", function(data){
-
-                 alert(data);
-
-                  });
-         }
-
- function saveWardrobe(e){
-
-        e.preventDefault();
-
-        var name = $("#name").val();
-
-         $.post("/api/wardrobe/add",
-                {
-                name : name
-                },
-                function(data, status){
-                getCloset();
-                alert("Data: " + data.name + "\nStatus: " + status);
 
 
-                    });
-             }
+
 
 
 
@@ -63,3 +68,4 @@ $("#close").click(close);
 $("#in").click(enter);
 $("#kick").click(kick);
 $("#out").click(exit);
+//$("#delete")click(del);
