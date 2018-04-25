@@ -1,15 +1,14 @@
 function getWardrobes(){
   $.get("/api/wardrobe/", function(data){
 
-    if(data.length <= 0){
+    if(data != null){
      return;
     }
 
     var html = "";
 
-     for(var i = 0 ; i< data.length ; i++){
-        html += "<p>" + data[i].name + " Is it open: " + data[i].isOpen + "</p>";
-        }
+        html += "<p>" + data.name + " Is it open: " + data.isOpen + "</p>";
+
 
      $("#wardrobes").html(html);
 
