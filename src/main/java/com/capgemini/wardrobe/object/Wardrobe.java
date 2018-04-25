@@ -1,18 +1,20 @@
 package com.capgemini.wardrobe.object;
 
 public class Wardrobe {
-    private String name;
+    private String name = "";
     private Boolean isOpen;
     private int strength;
     private Boolean inside;
+    private String status;
 
     public Wardrobe() {
     }
 
-    public Wardrobe(String name, Boolean isOpen, int strength) {
+    public Wardrobe(String name) {
         this.name = name;
-        this.isOpen = false;
         this.strength = 100;
+        this.isOpen = false;
+
     }
 
     public String getName() {
@@ -23,17 +25,12 @@ public class Wardrobe {
         this.name = name;
     }
 
-    public Boolean getIsOpen() {
-        return isOpen;
-    }
-
-    public void setOpen(Boolean isOpen) {
-        isOpen = isOpen;
-    }
-
-
     public Boolean getOpen() {
         return isOpen;
+    }
+
+    public void setOpen(Boolean open) {
+        isOpen = open;
     }
 
     public int getStrength() {
@@ -50,5 +47,13 @@ public class Wardrobe {
 
     public void setInside(Boolean inside) {
         this.inside = inside;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

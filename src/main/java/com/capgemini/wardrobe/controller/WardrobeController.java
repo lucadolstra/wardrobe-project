@@ -2,73 +2,83 @@ package com.capgemini.wardrobe.controller;
 
 
 import com.capgemini.wardrobe.object.Wardrobe;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/api/wardrobe/")  //all mappings have this default prefix
 public class WardrobeController {
 
-    Wardrobe wardrobe = new Wardrobe();
+   private Wardrobe wardrobe = new Wardrobe("");
 
-
-    @GetMapping("{name}/{isOpen}")  //allows you to put variable
-    public void createWardrobe(@PathVariable String name, @PathVariable Boolean isOpen, @PathVariable int strength) {
-    //    wardrobe = new Wardrobe(name, isOpen, strength);
-        Wardrobe wardrobe = new Wardrobe(name, isOpen, strength);
-    }
+    @GetMapping("{name}")  //allows you to put variable
+    public String createWardrobe(@PathVariable String name) {
+        name = wardrobe.getName();
+        return name;
+          }
 
     //localhost:80808/api/wardrobe/
-    @GetMapping("/")
-    public Wardrobe getAllWardrobes() {
+    @PostMapping("/add")
+    public Wardrobe wardrobe(Wardrobe wardrobe) {
         return wardrobe;
     }
-//
-//    //openCloset
-//    @GetMapping("/")
-//    public void openCloset(){
-//        wardrobe.setOpen(true);
-//    }
-//
-//    //closeCloset
-//    @GetMapping("/")
-//    public void closeCloset(){
-//        wardrobe.setOpen(false);
-//    }
-//
-//
-//    //go in closet
-//    @GetMapping("/")
-//    public void goInCloset(){
-//        if(wardrobe.getOpen()==true && wardrobe.getInside()==true){
-//            wardrobe.setInside(true);
-//        }
-//    }
-//
-//    //get out of closet
-//    @GetMapping("/")
-//    public void getOutOfCloset(){
-//        if(wardrobe.getInside() == true){
-//            wardrobe.setInside(false);
-//        }}
-//
-//    @GetMapping("/")
-//    public void kickCloset(){
-//        if(wardrobe.getIsOpen()==false){
-//            int damage =  (int) (Math.random() * 100);
-//            wardrobe.setStrength(wardrobe.getStrength()-damage);
-//
-//        }
-//   }
 
 
+    //openCloset
+    @GetMapping("/open")
+    public String openCloset(){
+        if(wardrobe.getOpen()==false){
+        wardrobe.setOpen(true);
+        return "the wardrobe has been opened";}
+        else{
+            return "the wardrobe was already open";
+        }
+    }
+
+    //closeCloset
+    @GetMapping("/close")
+    public String closeCloset(){
+        if(wardrobe.getOpen() == true){
+        wardrobe.setOpen(false);
+        return "the wardrobe is closed";}
+        else{
+            return "The wardrobe was already closed";
+        }
+
+    }
 
 
+    //go in closet
+    @GetMapping("/enter")
+    public String enter(){
+        if(wardrobe.getOpen()==true){
+            wardrobe.setInside(true);
+            return "You have entered the closet";
+        }
+        else {
+            return "You must open the closet in order to enter";
+        }
+    }
 
+    //get out of closet
+    @GetMapping("/exit")
+    public String getOutOfCloset(){
+        if(wardrobe.getInside() == true){
+            wardrobe.setInside(false);
+            return "you have left the closet";}
+            else{return "you are not in the closet";}
+        }
+
+    @GetMapping("/kick")
+    public String kickCloset(){
+        if(wardrobe.getOpen()==false){
+            int damage =  (int) (Math.random() * 100);
+            wardrobe.setStrength(wardrobe.getStrength()-damage);
+            return "The strength of the closet is now " + wardrobe.getStrength() + " percent";}
+            else{ return"close the closet in order to kick it";
+
+        }
+   }
 
 
 }
