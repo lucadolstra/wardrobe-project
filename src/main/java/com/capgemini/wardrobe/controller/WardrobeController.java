@@ -31,12 +31,15 @@ public class WardrobeController {
 
     //openCloset
     @GetMapping("/open")
-    public String openCloset(){
+    public Boolean openCloset(){
         if(wardrobe.getOpen()==false){
         wardrobe.setOpen(true);
-        return "the wardrobe has been opened";}
-        else{
-            return "the wardrobe was already open";
+        Boolean open = true;
+        return open;}
+        //return "the wardrobe has been opened";}
+        else{Boolean open = false;
+        return open;
+          //  return "the wardrobe was already open";
         }
     }
 

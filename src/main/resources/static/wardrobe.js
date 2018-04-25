@@ -10,7 +10,6 @@ function getCloset(){
 
         var name = $("#name").val();
 
-
          $.post("/api/wardrobe/add",
                 {
                 name : name
@@ -19,15 +18,13 @@ function getCloset(){
                function(data){
                 getCloset();
                 $("p").html("Closet: " + data.name );
-
-
-                    });
+          });
 }
 
 
  function open(){
  $.get("/api/wardrobe/open", function(data){
- $("p").html(data);
+ $("p").html("Closet open: " + data);
 
  });
  }
