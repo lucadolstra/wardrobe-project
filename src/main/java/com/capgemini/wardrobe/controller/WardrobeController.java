@@ -13,21 +13,67 @@ import java.util.ArrayList;
 @RequestMapping("/api/wardrobe/")  //all mappings have this default prefix
 public class WardrobeController {
 
-    private static ArrayList<Wardrobe> wardrobes = new ArrayList<>();
+    private static Wardrobe wardrobe;
 
-
-    @GetMapping("{name}/{isOpen}")  //allows you to put variable
-    public void createWardrobe(@PathVariable String name, @PathVariable Boolean isOpen) {
-        Wardrobe wardrobe = new Wardrobe(name, isOpen);
-        wardrobes.add(wardrobe);
+    @GetMapping("{name}")  //allows you to put variable
+    public void createWardrobe(@PathVariable String name, @PathVariable Boolean isOpen, @PathVariable int strength) {
+        this.wardrobe = new Wardrobe(name, isOpen, strength);
     }
 
     //localhost:80808/api/wardrobe/
     @GetMapping("/")
-    public ArrayList<Wardrobe> getAllWardrobes() {
-        return wardrobes;
+    public Wardrobe getAllWardrobes() {
+        return wardrobe;
     }
 
 
+    //openCloset
+    @GetMapping("/")
+    public void openCloset(){
+        wardrobe.setOpen(true);
+    }
+
+    //closeCloset
+    @GetMapping("/")
+    public void closeCloset(){
+        wardrobe.setOpen(false);
+    }
+
+
+    //go in closet
+    @GetMapping("/")
+    public void goInCloset(){
+        if(wardrobe.getOpen()==true && wardrobe.getInside()==true){
+            wardrobe.setInside(true);
+        }
+    }
+
+    //get out of closet
+    @GetMapping("/")
+    public void getOutOfCloset(){
+        if(wardrobe.getInside() == true){
+        wardrobe.setInside(false);
+    }}
+
+//    @GetMapping("/")
+//    public void kickCloset(){
+//        if(wardrobe.getIsOpen()==false){
+//            int damage =  (int) (Math.random() * 100);
+//            this.wardrobe.getStrength() = wardrobe.getStrength()-damage;
+//            if (wardrobe.getStrength() <= 0){
+//                createWardrobe(int name, boolean isOpen, strength);
+//            }
+//        }
+//    }
+//
+//
+//
+
 
 }
+
+
+
+
+
+

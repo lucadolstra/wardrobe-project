@@ -1,17 +1,9 @@
-function getWardrobes(){
+function getWardrobe(){
   $.get("/api/wardrobe/", function(data){
-
-    if(data.length <= 0){
-     return;
-    }
-
-    var html = "";
-
-     for(var i = 0 ; i< data.length ; i++){
-        html += "<p>" + data[i].name + " Is it open: " + data[i].isOpen + "</p>";
-        }
-
-     $("#wardrobes").html(html);
+      return;
+       var html = "";
+       html += "<p>" + data.name + " Is it open: " + data.isOpen + "</p>";
+     $("#wardrobe").html(html);
 
      });
 }
@@ -22,10 +14,10 @@ function saveWardrobe(e){
     var isOpen = true;
 
     $.get("/api/wardrobe/" + name + "/" + isOpen , function(){
-        getWardrobes();
+        getWardrobe();
 
         });
  }
 
 $("#saveForm").submit(saveWardrobe);  //eventhandler
-getWardrobes();
+getWardrobe();
