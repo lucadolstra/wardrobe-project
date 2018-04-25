@@ -7,8 +7,8 @@
  function close(){
  $.get("/api/wardrobe/close", function(data){
  alert(data);
- $("#close").hide;
  });
+  $("#close").hide;
  }
 
  function enter(){
